@@ -1,0 +1,128 @@
+/* 覆盖bootstrap中tab导航响应式处理 start*/
+.nav-tabs.nav-justified > li {
+    display: table-cell;
+    width: 1%;
+}
+
+.nav-tabs.nav-justified > li > a {
+    margin-bottom: 0;
+}
+
+.nav-tabs.nav-justified > li > a {
+    border-bottom: 1px solid #ddd;
+    border-radius: 4px 4px 0 0;
+}
+
+.nav-tabs.nav-justified > .active > a,
+.nav-tabs.nav-justified > .active > a:hover,
+.nav-tabs.nav-justified > .active > a:focus {
+    border-bottom-color: #fff;
+}
+
+.nav-justified > li {
+    display: table-cell;
+    width: 1%;
+}
+
+.nav-justified > li > a {
+    margin-bottom: 0;
+}
+
+.nav > li > a {
+    position: relative;
+    display: block;
+    padding: 10px 5px;
+}
+
+/* 覆盖bootstrap中tab导航响应式处理 end*/
+
+.container-main {
+    max-width: 480px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background: #f0f0f0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.container-include {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.logo {
+    margin-bottom: 5px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+}
+
+.logo img {
+    width: 100%;
+}
+
+.login {
+    background-image: url('../img/bg_login.jpg');
+    background-size: 100% 100%;
+    padding: 20px 0px;
+}
+
+.login form {
+    border: 1px solid #5fa8cb;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 0px 10px 15px 10px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.login-title {
+    text-align: center;
+    border-bottom: 1px solid #5fa8cb;
+    padding-bottom: 10px;
+}
+
+.row-split {
+    margin-bottom: 5px;
+}
+
+.nav-tabs-list {
+    border-top: 2px solid #5fa8cb;
+}
+
+.nav-tabs-item {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.zj-item-bottom {
+    position: absolute;
+    right: 15%;
+    bottom: 20px;
+    left: 15%;
+    z-index: 10;
+    color: #fff;
+    text-align: center;
+}
+
+.zj-item-bottom p {
+    margin: 0px 2px 5px 2px;
+    padding: 2px 0px;
+    font-size: xx-small;
+}
+
+.zj-item-top {
+    position: absolute;
+    right: 15%;
+    left: 15%;
+    z-index: 10;
+    color: #fff;
+    text-align: center;
+}
+
+.zj-item-top p {
+    margin: 0px 2px;
+    padding: 2px 0px;
+    font-size: xx-small;
+}
+.tab-content .thumbnail{
+    background-color: #f5f5f5;
+}
