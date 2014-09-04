@@ -15,42 +15,6 @@
     <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <style>
-        .nav-tabs.nav-justified > li {
-            display: table-cell;
-            width: 1%;
-        }
-
-        .nav-tabs.nav-justified > li > a {
-            margin-bottom: 0;
-        }
-
-        .nav-tabs.nav-justified > li > a {
-            border-bottom: 1px solid #ddd;
-            border-radius: 4px 4px 0 0;
-        }
-
-        .nav-tabs.nav-justified > .active > a,
-        .nav-tabs.nav-justified > .active > a:hover,
-        .nav-tabs.nav-justified > .active > a:focus {
-            border-bottom-color: #fff;
-        }
-
-        .nav-justified > li {
-            display: table-cell;
-            width: 1%;
-        }
-
-        .nav-justified > li > a {
-            margin-bottom: 0;
-        }
-
-        .nav > li > a {
-            position: relative;
-            display: block;
-            padding: 10px 5px;
-        }
-    </style>
 </head>
 <body>
 <div class="container-fluid" style="max-width: 480px;padding-left: 5px;padding-right: 5px;background: #f0f0f0;">
@@ -80,7 +44,7 @@
     <div class="row">
         <div class="col-xs-12">
             <iframe id="query_frame" src="flight_state_query.html" scrolling="no"
-                    style="width: 100%;border: 0px;padding: 10px 0px;"></iframe>
+                    style="width: 100%;border: 0px;padding: 5px 0px;height: 435px;background: #f0f0f0;"></iframe>
         </div>
     </div>
     <div class="row">
@@ -159,10 +123,10 @@
             window.location.href = "flight_info.html";
         });
 
-        $("#query_frame").load(function(){
-            var mainheight = $(this).contents().find("body").height();
-            $(this).height(mainheight);
-        });
+//        $("#query_frame").load(function(){
+//            var mainheight = $(this).contents().find("body").height();
+//            $(this).height(mainheight);
+//        });
     });
 </script>
 </body>
