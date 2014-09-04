@@ -62,7 +62,7 @@
 .login {
     background-image: url('../img/bg_login.jpg');
     background-size: 100% 100%;
-    padding: 20px 0px;
+    padding: 35px 0px;
 }
 
 .login form {
@@ -123,6 +123,19 @@
     padding: 2px 0px;
     font-size: xx-small;
 }
-.tab-content .thumbnail{
+
+.tab-content .thumbnail {
     background-color: #f5f5f5;
+}
+
+.error-alert {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    position: absolute;
+    right: 5%;
+    left: 5%;
+    z-index: 10;
+    text-align: center;
+    background: rgba(240, 123, 123, 0.8);
+    color: #AA0C09;
 }
