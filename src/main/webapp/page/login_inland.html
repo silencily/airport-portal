@@ -22,15 +22,20 @@
 <div class="row">
     <div class="col-xs-12">
         <div class="logo">
-            <a href="login.html"><img src="../static/img/logo.jpg"></a>
+            <a href="login_inland.html"><img src="../static/img/logo.jpg"></a>
         </div>
 
     </div>
 </div>
 <div class="row ">
     <div class="col-xs-12">
+        <div id="alert-msg" class="alert alert-danger alert-dismissible error-alert" role="alert" style="display: none">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span
+                    class="sr-only">Close</span></button>
+            <strong>错误：</strong> <span id="msg"></span>
+        </div>
         <div class="login">
-            <form role="form" id="signup-form" action="index.html" method="post">
+            <form role="form" id="signin-form" action="index.html" method="post">
                 <div class="row">
                     <div class="col-xs-12">
                         <h4 class="login-title">
@@ -41,7 +46,7 @@
                     <div class="col-xs-12">
                         <div class="input-group ">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span> </span>
-                            <input type="text" class="form-control" placeholder="姓名">
+                            <input id="name" name="name" type="text" class="form-control" placeholder="姓名">
                         </div>
                     </div>
                 </div>
@@ -49,7 +54,7 @@
                     <div class="col-xs-12">
                         <div class="input-group ">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-plane"></span> </span>
-                            <input type="text" class="form-control" placeholder="航班号">
+                            <input id="flight" name="flight" type="text" class="form-control" placeholder="航班号">
                         </div>
                     </div>
                 </div>
@@ -57,7 +62,7 @@
                     <div class="col-xs-12">
                         <div class="input-group ">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span> </span>
-                            <input type="text" class="form-control" placeholder="座位号">
+                            <input id="seat" name="seat" type="text" class="form-control" placeholder="座位号">
                         </div>
                     </div>
                 </div>
@@ -65,7 +70,8 @@
                     <div class="col-xs-12">
                         <div class="checkbox" style="text-align: center">
                             <label>
-                                <input type="checkbox" checked="checked"> <strong style="font-size: 13px;">我已经阅读并接受免责声明</strong>
+                                <input id="check-dec" type="checkbox" checked="checked"> <strong
+                                    style="font-size: 13px;">我已经阅读并接受免责声明</strong>
                             </label>
                         </div>
                     </div>
@@ -75,7 +81,7 @@
                         <button id="declaration" type="button" class="form-control btn btn-primary">免责声明</button>
                     </div>
                     <div class="col-xs-6" style="padding-left: 5px">
-                        <button type="submit" class="form-control btn btn-primary">登录</button>
+                        <button id="signin" type="button" class="form-control btn btn-primary">登录</button>
                     </div>
                 </div>
             </form>
@@ -151,15 +157,15 @@
     <div class="col-xs-12">
         <!-- Nav tabs -->
         <ul class="nav nav-tabs nav-justified nav-tabs-list" role="tablist">
-            <li class="active"><a class="nav-tabs-item" href="#fire" role="tab" data-toggle="tab">
+            <li class="active"><a  href="#fire" role="tab" data-toggle="tab">
                 <span class="glyphicon glyphicon-fire"></span> 热门</a></li>
-            <li><a href="#vedio" role="tab" data-toggle="tab" class="nav-tabs-item"><span
+            <li><a href="#vedio" role="tab" data-toggle="tab" ><span
                     class="glyphicon glyphicon-film"></span> 视频</a></li>
-            <li><a href="#book" role="tab" data-toggle="tab" class="nav-tabs-item"><span
+            <li><a href="#book" role="tab" data-toggle="tab" ><span
                     class="glyphicon glyphicon-book"></span> 电子书</a></li>
-            <li><a href="#game" role="tab" data-toggle="tab" class="nav-tabs-item"><span
+            <li><a href="#game" role="tab" data-toggle="tab" ><span
                     class="glyphicon glyphicon-screenshot"></span> 游戏</a></li>
-            <li><a href="#music" role="tab" data-toggle="tab" class="nav-tabs-item"><span
+            <li><a href="#music" role="tab" data-toggle="tab" ><span
                     class="glyphicon glyphicon-headphones"></span> 音乐</a></li>
         </ul>
 
@@ -167,7 +173,9 @@
         <div class="tab-content">
             <div class="tab-pane fade in active" id="fire">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><span class="glyphicon glyphicon-chevron-left" style="color: #5fa8cb"></span> 热门推荐</div>
+                    <div class="panel-heading"><span class="glyphicon glyphicon-chevron-left"
+                                                     style="color: #5fa8cb"></span> 热门推荐
+                    </div>
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-xs-6">
@@ -176,6 +184,7 @@
                                         <p>CCTV-1 综合</p>
                                     </div>
                                     <img src="../static/img/snap1.gif">
+
                                     <div class="zj-item-bottom">
                                         <p>新闻联播</p>
                                     </div>
@@ -187,6 +196,7 @@
                                         <p>CCTV-1 综合</p>
                                     </div>
                                     <img src="../static/img/snap2.gif" alt="...">
+
                                     <div class="zj-item-bottom">
                                         <p>新闻联播</p>
                                     </div>
@@ -200,6 +210,7 @@
                                         <p>CCTV-1 综合</p>
                                     </div>
                                     <img src="../static/img/snap3.gif" alt="...">
+
                                     <div class="zj-item-bottom">
                                         <p>新闻联播</p>
                                     </div>
@@ -211,6 +222,7 @@
                                         <p>CCTV-1 综合</p>
                                     </div>
                                     <img src="../static/img/snap4.gif" alt="...">
+
                                     <div class="zj-item-bottom">
                                         <p>新闻联播</p>
                                     </div>
@@ -225,6 +237,7 @@
                                     </div>
                                     <img src="../static/img/snap1.gif"
                                          alt="...">
+
                                     <div class="zj-item-bottom">
                                         <p>新闻联播</p>
                                     </div>
@@ -236,6 +249,7 @@
                                         <p>CCTV-1 综合</p>
                                     </div>
                                     <img src="../static/img/snap2.gif" alt="...">
+
                                     <div class="zj-item-bottom">
                                         <p>新闻联播</p>
                                     </div>
@@ -249,6 +263,7 @@
                                         <p>CCTV-1 综合</p>
                                     </div>
                                     <img src="../static/img/snap3.gif" alt="...">
+
                                     <div class="zj-item-bottom">
                                         <p>新闻联播</p>
                                     </div>
@@ -260,6 +275,7 @@
                                         <p>CCTV-1 综合</p>
                                     </div>
                                     <img src="../static/img/snap4.gif" alt="...">
+
                                     <div class="zj-item-bottom">
                                         <p>新闻联播</p>
                                     </div>
@@ -284,23 +300,73 @@
 <script src="../static/js/bootstrap.min.js"></script>
 <script src="../static/js/hammer.js"></script>
 <script src="../static/js/jquery.hammer.js"></script>
-
+<script src="../static/js/jquery.storageapi.js"></script>
 <script>
     $(document).ready(function () {
+        //去除登录标识
+        if ($.localStorage.isSet('isLogin')) {
+            $.localStorage.remove('isLogin');
+        }
         $('#carousel-example-generic').hammer().on('swipeleft', function () {
             $(this).carousel('next');
         })
         $('#carousel-example-generic').hammer().on('swiperight', function () {
             $(this).carousel('prev');
         })
-        $('#declaration').click(function(){
-            window.location.href="declaration.html";
+        $('#declaration').click(function () {
+            window.location.href = "declaration.html";
         });
-        $('#flight_state').click(function(){
-            window.location.href="flight_state.html";
+        $('#flight_state').click(function () {
+            window.location.href = "flight_state.html";
         });
-        $('#flight_info').click(function(){
-            window.location.href="flight_info.html";
+        $('#flight_info').click(function () {
+            window.location.href = "flight_info.html";
+        });
+
+        //免责声明checkbox勾选处理
+        $('#check-dec').change(function () {
+            if (!$(this).is(':checked')) {
+                $('#signin').attr('disabled', 'disabled');
+            } else {
+                $('#signin').removeAttr('disabled');
+            }
+        });
+
+        //显示提示信息
+        var showMsg = function (msg) {
+            $('#msg').text(msg);
+            $('#alert-msg').show('slow', function () {
+                setTimeout(function () {
+                    $('#msg').text('');
+                    $('#alert-msg').hide();
+                }, 5000);
+            });
+        }
+
+        //form提交
+        $('#signin').click(function () {
+            //validate fields
+            var name = $('#name').val(), flight = $('#flight').val(), seat = $('#seat').val();
+            if (name == '') {
+                showMsg('请输入姓名。');
+                return;
+            }
+            if (flight == '') {
+                showMsg('请输入航班号。');
+                return;
+            }
+            if (seat == '') {
+                showMsg('请输入座位号。');
+                return;
+            }
+            //设置登录标识
+            $.localStorage.set('isLogin', true);
+
+            $('#signin-form').submit();
+        });
+
+        $('.thumbnail').click(function(){
+            showMsg('认证登录后即可访问任意网站。');
         });
 
     });

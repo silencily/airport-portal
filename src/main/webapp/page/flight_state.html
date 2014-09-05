@@ -22,7 +22,7 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="logo">
-                <a href="index.html"><img src="../static/img/logo.jpg"></a>
+                <a id="logo" href="#"><img src="../static/img/logo.jpg"></a>
             </div>
 
         </div>
@@ -105,7 +105,7 @@
 <script src="../static/js/bootstrap.min.js"></script>
 <script src="../static/js/hammer.js"></script>
 <script src="../static/js/jquery.hammer.js"></script>
-
+<script src="../static/js/jquery.storageapi.js"></script>
 <script>
     $(document).ready(function () {
         $('#carousel-example-generic').hammer().on('swipeleft', function () {
@@ -123,11 +123,13 @@
         $('#flight_info').click(function () {
             window.location.href = "flight_info.html";
         });
-
-//        $("#query_frame").load(function(){
-//            var mainheight = $(this).contents().find("body").height();
-//            $(this).height(mainheight);
-//        });
+        $('#logo').click(function () {
+            if ($.localStorage.isSet('isLogin')) {
+                window.location.href = "index.html";
+            } else {
+                window.location.href = "login.html";
+            }
+        });
     });
 </script>
 </body>

@@ -87,8 +87,7 @@
 .nav-tabs-list {
     border-top: 2px solid #5fa8cb;
 }
-
-.nav-tabs-item {
+.nav-tabs-list > li > a{
     padding-right: 0px;
     padding-left: 0px;
 }
