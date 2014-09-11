@@ -62,7 +62,7 @@
 .login {
     background-image: url('../img/bg_login.jpg');
     background-size: 100% 100%;
-    padding: 35px 0px;
+    padding: 35px 0px 5px 0px;
 }
 
 .login form {
@@ -80,6 +80,13 @@
     padding-bottom: 10px;
 }
 
+.login-media {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    color: #ffffff;
+}
+
 .row-split {
     margin-bottom: 5px;
 }
@@ -87,7 +94,8 @@
 .nav-tabs-list {
     border-top: 2px solid #5fa8cb;
 }
-.nav-tabs-list > li > a{
+
+.nav-tabs-list > li > a {
     padding-right: 0px;
     padding-left: 0px;
 }
@@ -137,4 +145,15 @@
     text-align: center;
     background: rgba(240, 123, 123, 0.8);
     color: #AA0C09;
+}
+.media-logo{
+    border-top: 2px solid #5fa8cb;
+}
+.media-logo img{
+    width: 130px;
+    height: 40px;
+}
+.media-logo .row div{
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
