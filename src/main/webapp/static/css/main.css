@@ -93,6 +93,7 @@
 
 .nav-tabs-list {
     border-top: 2px solid #5fa8cb;
+    font-size: 10px;
 }
 
 .nav-tabs-list > li > a {
