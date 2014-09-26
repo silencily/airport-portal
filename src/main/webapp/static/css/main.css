@@ -37,7 +37,7 @@
 /* 覆盖bootstrap中tab导航响应式处理 end*/
 
 .container-main {
-    max-width: 480px;
+    /*max-width: 480px;*/
     padding-left: 5px;
     padding-right: 5px;
     background: #f0f0f0;
@@ -170,4 +170,11 @@
     margin-left: -10px;
     margin-right: -10px;
     border-radius: 3px;
+}
+
+@media (min-width: 768px){
+    #vedio img ,#fire img {
+        width: 100%;
+        height: auto;
+    }
 }
