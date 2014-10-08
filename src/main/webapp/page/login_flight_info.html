@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>机场信息</title>
+
+    <!-- Bootstrap -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/main.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container-fluid container-main">
+<div class="row">
+    <div class="col-xs-12">
+        <div class="logo">
+            <a id="logo" href="#"><img src="../static/img/logo.jpg"></a>
+        </div>
+
+    </div>
+</div>
+<div class="row ">
+    <div class="col-xs-12">
+        <div id="alert-msg" class="alert alert-danger alert-dismissible error-alert" role="alert" style="display: none">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span
+                    class="sr-only">Close</span></button>
+            <strong>错误：</strong> <span id="msg"></span>
+        </div>
+        <div class="login">
+            <form role="form" id="signin-form" action="index.html" method="post">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h4 class="login-title">
+                            <strong>免费认证登录</strong></h4>
+                    </div>
+                </div>
+                <div class="row row-split">
+                    <div class="col-xs-12">
+                        <div class="input-group ">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span> </span>
+                            <input id="phone" name="phone" type="text" class="form-control" placeholder="手机号">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-7" style="padding-right: 0px">
+                        <div class="input-group ">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-flag"></span> </span>
+                            <input id="vcode" name="vcode" type="text" class="form-control" placeholder="验证码">
+                        </div>
+                    </div>
+                    <div class="col-xs-5" style="padding-left: 2px">
+                        <button type="button" class="form-control btn btn-warning"
+                                style="padding-left: 0px;padding-right: 0px;">获取验证码
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="checkbox" style="text-align: center">
+                            <label>
+                                <input id="check-dec" type="checkbox" checked="checked"> <strong
+                                    style="font-size: 13px;">我已经阅读并接受免责声明</strong>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6" style="padding-right: 5px">
+                        <button id="declaration" type="button" class="form-control btn btn-primary">免责声明</button>
+                    </div>
+                    <div class="col-xs-6" style="padding-left: 5px">
+                        <button id="signin" type="button" class="form-control btn btn-primary">登录</button>
+                    </div>
+                </div>
+            </form>
+            <p class="login-media"><strong>媒体合作：4000900034</strong></p>
+        </div>
+    </div>
+</div>
+<div class="row" style="margin: 5px -15px 0px -15px;">
+    <div class="col-xs-12">
+        <div class="btn-group btn-group-justified">
+            <div class="btn-group">
+                <button id="home" type="button" class="btn btn-primary">首页</button>
+            </div>
+            <div class="btn-group">
+                <button id="flight_info" type="button" class="btn btn-default active">机场信息</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+<div class="col-xs-12">
+<div class="panel panel-default" style="margin-bottom: 0px;">
+<div class="panel-heading" style="border-bottom: 2px solid #5fa8cb;background-color: #E9E6E6">旅客服务</div>
+<div class="panel-body" style="padding: 0px">
+<div class="panel-group" style="margin-bottom: 0px" id="accordion">
+<div class="panel panel-default" style="margin-bottom: 0px;margin-top: 0px">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne1">
+                旅客须知
+                <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+            </a>
+        </h4>
+    </div>
+    <div id="collapseOne1" class="panel-collapse collapse">
+        <div class="panel-body">
+            <h5 class="sub-list-title" style="margin-top: -5px;">乘机手续</h5>
+            <dl>
+                <dt>如何办理值机手续办理</dt>
+                <dd>
+                    <p>请根据您所选乘的航空公司，在出发大厅入口处的航班信息显示屏上查询您所乘坐航班相应的值机柜台，然后到相应的值机柜台办理乘机手续。</p>
+
+                    <p>
+                        ★无行李托运的旅客还可以使用航站楼内的自助值机设备自助办理值机。
+                    </p>
+
+                    <p style="text-align: center;">
+                        <img src="../static/img/zhiji.jpg">
+                    </p>
+                </dd>
+            </dl>
+            <dl>
+                <dt>乘机的有效证件</dt>
+                <dd>
+                    <p>按照中华人民共和国公安部、民航总局有关规定，乘机有效证件分为四大类：居民身份证件、军人类证件、护照类证件和其它可以乘机的有效证件。</p>
+
+                    <p>
+                        <strong>一、居民身份证件</strong> 国内在陆地区的居民身份证和临时居民身份证。
+                    </p>
+
+                    <p>
+                        <strong>二、军人类证件</strong> 军官证、武警警官证、士兵证、军队文职干部证、军队离（退）休干部证、军队职工证、学员证。
+                    </p>
+
+                    <p>
+                        <strong>三、护照类证件</strong>
+                        护照、港澳同胞回乡证、港澳居民来往内地通行证、中华人民共和国往来港澳通行证、台湾居民来往大陆通行证、大陆居民往来台湾通行证、外国人居留证、外国人出入境证、外交官证、领事官证、海员证等。
+                    </p>
+
+                    <p>
+                        <strong>四、其它可以乘机的有效证件</strong> 1.本届全国人大代表证、全国政协委员证；
+                        2.出席全国或省、自治区、直辖市的党代会、人代会、政协会、工、青妇代表会和劳模会的代 表，凭所属县、团级（含）
+                        以上党政军主管部门出具的临时身份征明；3.旅客的居民身份证所在户籍所在地以外被盗或丢失的，凭发案、报失地分公安机关出具的临时身份证明；
+                        4.年龄已高的老人（按法定退休年龄掌握），凭接待单位、本人原工作单位或子女、配偶工作单位（必须是县团级[含]以上间位）出具的临时身份证明；5.十六岁以下未成年人凭学生证、户口簿或者所在地公安机关出具的身份证明等。
+                    </p>
+                </dd>
+            </dl>
+            <h5 class="sub-list-title">行李托运</h5>
+            <dl>
+                <dt>随身携带行李的限制规定</dt>
+                <dd>
+                    <p>
+                        ⑴、乘坐国内航班：旅客的手提行李总重量不要超过5公斤，体积每件行李不超过20×40×55厘米（根据各航空公司要求不同可能有所不同）。值机柜台现场有供旅客测试手提行李大小的行李筐，如果旅客的行李可以放入该标准筐，则该件行李可以随身携带，否则需要托运。</p>
+
+                    <p>
+                        ⑵、乘坐国际航班：通常情况，手提行李总重量不要超过5公斤，每件行李体积不超过20×40×55厘米（三边之和不超过115厘米）。（部分航空公司有特殊重量限制规定，请旅客留意机票上的提示，或向航空公司咨询。）
+                    </p>
+                </dd>
+            </dl>
+            <dl>
+                <dt>托运行李的相关规定</dt>
+                <dd>
+                    <p>
+                        ⑴乘坐国内航线：持成人或儿童客票的头等舱旅客为40公斤，公务舱旅客为30公斤，经济舱旅客为20公斤。持婴儿票的旅客，承运人规定不同，视选乘航空公司而定。
+                    </p>
+
+                    <p>
+                        ⑵乘坐国际航线：经济舱旅客的免费托运行李限额为20公斤，经济舱持学生护照的旅客，可以免费托运的行李限额为30公斤；公务舱免费托运行李限额为30公斤；头等舱免费托运行李限额为40公斤。但当目的地为美洲时，其托运行李可以为两件，每件不超过23公斤，单件行李三边长度和不超过158厘米。当超过时，旅客需要支付逾重行李费。（部分航空公司有特殊重量限制规定，请旅客留意机票上的提示，或向航空公司咨询）
+                    </p>
+
+                    <p>
+                        ★请您到达机场后，参看济南国际机场航站楼旅客服务指南，到具体的值机柜台办理行李托运。
+                    </p>
+
+                    <p>
+                        ★不可作为托运行李运输物品有：重要文件和资料、证券、货币、汇票、珠宝、贵重金属及其制品、古玩字画、易碎易损坏物品、易腐物品、样品、旅行证件、贵重物品等。（具体请向航空公司问询）
+                    </p>
+
+                    <p>
+                        ★请您在托运行李前注意清除行李箱/袋上的废旧行李条及有条码的标签，以确保您的行李正确运至目的地
+                    </p>
+                </dd>
+            </dl>
+            <h5 class="sub-list-title">安全检查</h5>
+            <dl>
+                <dt>乘机的有效证件</dt>
+                <dd>
+                    <p>
+                        依据中华人民共和国公安部、民航总局有关规定，乘机有效证件分为四大类：居民身份证件、军人类证件、护照类证件和其它可以乘机的有效证件。
+                    </p>
+
+                    <p>
+                        一、居民身份证件 国内在陆地区的居民身份证和临时居民身份证。
+                    </p>
+
+                    <p>
+                        二、军人类证件 军官证、武警警官证、士兵证、军队文职干部证、军队离（退） 休干部证、军队职工证、学员证。
+                    </p>
+
+                    <p>
+                        三、护照类证件
+                        护照、港澳同胞回乡证、港澳居民来往内地通行证、中华人民共和国往来港澳通行证、台湾居民来往大陆通行证、大陆居民往来台湾通行证、外国人居留证、外国人出入境证、外交官证、领事官证、海员证等。
+                    </p>
+
+                    <p>
+                        四、其它可以乘机的有效证件<br>
+                        1.本届全国人大代表证、全国政协委员证；<br>
+                        2.出席全国或省、自治区、直辖市的党代会、人代会、政协会、工、青妇代表会和劳模会的代表，凭所属县、团级（含）以上党政军主管部门出具的临时身份征明；<br>
+                        3.旅客的居民身份证所在户籍所在地以外被盗或丢失的，凭发案、报失地公安机关出具的临时身份证明；<br>
+                        4.年龄已高的老人（按法定退休年龄掌握），凭接待单位、本人原工作单位或子女、配偶工作单位（必须是县团级[含]以上间位）出具的临时身份证明；<br>
+                        5.十六岁以下未成年人凭户口簿或者所在地公安机关出具的身份证明等等。
+                    </p>
+                </dd>
+            </dl>
+            <dl>
+                <dt>
+                    民航安全技术检查的概念
+                </dt>
+                <dd>
+                    <p>
+                        民航安全技术检查，是指在民用机场实施的为防止劫（炸）飞机和其他危害航空安全事件的发生，保障旅客、机组人员和飞机安全所采取的一种强制性的技术性检查。
+                    </p>
+                </dd>
+            </dl>
+            <dl>
+                <dt>
+                    民航安全技术检查的性质
+                </dt>
+                <dd>
+                    <p>
+                        民航安全技术检查，是民航空防安全保卫工作的重要组成部分，是国务院民用航空主管部门授权的专业安检队伍，为保障航空安全，依照国家法律法规对乘坐民航班机的中、外籍旅客及物品以及航空货物、邮件进行公开的安全技术检查，防范劫持、爆炸民航班机和其他危害航空安全的行为，保障国家和旅客生命财产的安全，具有强制性和专业技术性。
+                    </p>
+                </dd>
+            </dl>
+            <dl>
+                <dt>
+                    安检相关规定
+                </dt>
+                <dd>
+                    <p>禁止旅客随身携带或托运的物品</p>
+
+                    <p>
+                        依据《中国民用航空安全检查规则》附件一《禁止旅客随身携带或者托运的物品》如下，共九大类：<br>
+                        一、枪支、军用或警用械具类（含主要零部件）物品；<br>
+                        二、爆炸物品类；<br>
+                        三、管制刀具；<br>
+                        四、易燃、易爆物品；<br>
+                        五、氰化物、剧毒农药等剧毒物品；<br>
+                        六、腐蚀性物品：硫酸、盐酸、硝酸、有液蓄电池、氢氧化钠、氢氧化钾等腐蚀性物品；<br>
+                        七、放射性物品，放射性同位素等放射性物品；<br>
+                        八、其他危害飞行安全的物品，如可能干扰飞机上各种仪表正常工作的强磁化物、有强烈刺激性气味的物品等；<br>
+                        九、国家法律法规规定的其他禁止携带、运输的物品。<br>
+                    </p>
+
+                    <p>
+                        禁止旅客随身携带但可以作为行李托运的物品
+                    </p>
+
+                    <p>
+                        依据《中国民用航空安全检查规则》附件二《禁止旅客随身携带但可以作为行李托运的物品》如下：依据《中国民用航空安全检查规则》附件二《禁止旅客随身携带但可以作为行李托运的物品》如下：<br>
+                        可以用于危害航空安全的菜刀、大剪刀、大水果刀、剃刀等生活用刀，手术刀、屠宰刀、雕刻刀等专业刀具，文艺单位表演用的刀、矛、剑、戟等，以及斧、凿、锤、锥、加重或有尖钉的手杖、铁头登山杖和其他可用来危害航空安全的锐器、钝器。
+                    </p>
+
+                    <p>
+                        禁止旅客随身携带液态物品
+                    </p>
+
+                    <p>
+                        依据《关于禁止旅客随身携带液态物品乘坐国内航班的公告》〔2008〕2号和〔2008〕1083号如下：<br>
+                        一、乘坐国内航班的旅客一律禁止随身携带液态物品（包括液体、凝胶、气溶胶等形态的液态物品），但可办理交运，其包装应符合民航运输有关规定。<br>
+                        二、旅客携带少量旅行自用的化妆品，但不包括洗发水、淋浴液。容器容积超过100毫升，无论容器中剩余多少，不许携带；旅客携带适量的牙膏及剃须膏，每种限带一件，每件容积不超过100克（毫升）。<br>
+                        三、来自境外需在中国境内机场转乘国内航班的旅客，其携带入境的免税液态物品应置于袋体完好无损且封口的透明塑料袋内，并须出示购物凭证，经安全检查确认无疑后方可携带。<br>
+                        四、酒类物品不得随身携带，但可作为托运行李交运。酒精度70度以下（不含70度）的酒类物品，交运总量不得超过2瓶（容积总量不超过1000毫升）；酒精度70度（含70度）以上的酒类物品不得办理交运。酒类物品的包装应符合民航运输有关规定。<br>
+                        五、糖尿病患者或其他患者携带必需的液态药品（凭医生处方或者医院证明，在药店购买的除外），经安全检查确认无疑后，可适量随身携带。<br>
+                        六、有婴儿随行的旅客，购票时可向航空公司申请，由航空公司在机上免费提供液态乳制品。<br>
+                        七、旅客因违反上述规定造成误机等后果，责任自负。
+                    </p>
+
+                    <p>
+                        禁止旅客随身携带打火机火柴
+                    </p>
+
+                    <p>
+                        依据《关于禁止旅客随身携带打火机火柴乘坐民航飞机的公告》民航公告〔2008〕3号如下：根据航空安全需要，禁止旅客随身携带打火机、火柴乘坐民航飞机，提醒广大旅客自行处理好相关物品，由此发生的延误和误机，后果自负。<br>
+                        特别提示：打火机、火柴既不能随身携带，且不能办理托运。
+                    </p>
+                </dd>
+            </dl>
+            <dl>
+                <dt>
+                    锂电池的乘机运输规定
+                </dt>
+                <dd>
+                    <p>
+                        依据民航明传电报《关于加强旅客行李中锂电池航空运输安全的通知》〔2011〕1888号如下：
+                    </p>
+
+                    <p>
+                        1．旅客携带锂电池小于100Wh（瓦特小时）或2克的：<br>
+                        ①可装在手提行李或交运行李的设备中携带。<br>
+                        ②备用电池作为自用的，做好绝缘防护后可随身携带。
+                    </p>
+
+                    <p>
+                        2. 旅客携带锂电池大于100Wh小于160Wh的：<br>
+                        ①在设备中，经航空公司批准（批准人签字、盖章），并做好防意外启动措施，可以装在交运行李或手提行李的设备中携带。<br>
+                        ②备用电池，经航空公司批准并做好防意外启动措施，仅能放在手提行李中携带，只能携带两块。<br>
+                    </p>
+
+                    <p>
+                        3. 旅客携带锂电池大于等于160Wh的：严禁携带。
+                    </p>
+                </dd>
+            </dl>
+            <dl>
+                <dt>行李安全检查规定</dt>
+                <dd>
+                    <p>
+                        随身携带物品：随身携带物品的重量，每位旅客以5公斤为限。持头等舱客票的旅客，每人可随身携带两件物品；持公物舱或经济舱客票的旅客，每人只能随身携带一件物品。每件随身携带物品的体积均不得超过20×40×55厘米。超过上述重量、件数或体积限制，应作为托运行李托运。
+                    </p>
+
+                    <p>
+                        不准作为行李运输的物品：旅客不得在托运行李或随身携带物品内夹带易燃、爆炸、腐蚀、有毒、放射性物品，可聚合物质，磁性物质、打火机火柴及其危险物品。旅客乘坐飞机不得携带武器、管制刀具、利器和凶器。旅客不得在托运行李中夹带个人自用的内含锂电池的电子消费品设备的备用电池（如：手表、计算器、照相机、手机、手提电脑、便携式摄像机等）。
+                    </p>
+
+                    <p>
+                        不准在托运物品中夹带的物品：重要文件和资料、外交信袋、证券、货币、汇票、贵重物品、易碎易腐物品，以及其它需要专人照管的物品，不得夹入行李内托运。
+                    </p>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+<div class="panel panel-default" style="margin-bottom: 0px;margin-top: 0px">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne2">
+                精品服务
+                <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+            </a>
+        </h4>
+    </div>
+    <div id="collapseOne2" class="panel-collapse collapse">
+        <div class="panel-body">
+            <h5 class="sub-list-title" style="margin-top: -5px;">值机服务</h5>
+            <p style="text-align: center;font-weight: bold;">
+                自助值机，随时随心<br>
+                <span style="padding-left: 150px;">——大厅自助值机岛</span>
+            </p>
+            <p style="text-indent: 2em;">
+                在候机大厅醒目的位置，设立了自助值机岛，摆放了12台自助设备为旅客提供自助式乘机手续服务，安排专人引导，为旅客现场答疑解惑，操作示范。您不必排队等候，就可以通过自助设备，随心所欲地选择所乘航班的座位，打印登机牌，充分彰显自由、随性、便捷的乘机体验。
+            </p>
+            <p style="text-align: center;">
+                <img style="width: 100%" src="../static/img/zzzj.jpg">
+            </p>
+            <p style="text-align: center;font-weight: bold;">
+                乘机手续，“PERFECT”<br>
+                <span style="padding-left: 150px;">——全开放式值机柜台</span>
+            </p>
+            <p style="text-indent: 2em;">
+                全开放的通用值机柜台（22-34号值机柜台，除山航、东航外），让旅客感受到随到随办，不限时间、不限柜台、不限航班的畅快。值机柜台的“PERFECT”（即“P”专业的、“E”高效的、“R”理性的、“F”快速的、“E”真诚的、“C”细心的、“T”周全的）服务，逐一体现在服务过程的每个细节。
+            </p>
+            <p style="text-align: center;">
+                <img style="width: 100%" src="../static/img/zj.PNG">
+            </p>
+
+            <h5 class="sub-list-title">特殊旅客服务</h5>
+            <p style="text-indent: 2em;">
+                特殊旅客在乘机许可的情况下，可到二楼出发大厅的总服务台办理特服申请手续，将会有专人陪同办理乘机手续，引导登机或接机一条龙服务。特殊旅客包括：无成人陪伴儿童（5-12周岁）、无人陪伴老人（70周岁以上）、病残旅客、盲/聋旅客、孕妇等。
+            </p>
+            <p style="text-align: center;">
+                <img style="width: 100%" src="../static/img/wrpbet.PNG">
+            </p>
+            <h5 class="sub-list-title">贵宾室服务</h5>
+            <p style="text-align: center;font-weight: bold;">
+                尊贵有礼  行之有道<br>
+                <span style="padding-left: 150px;">——机场贵宾厅</span>
+            </p>
+            <p style="text-indent: 2em;">
+                <strong>迎宾之礼：</strong>踏上红黄相间的织花地毯，尊贵大气的贵宾厅尽显您的眼前。迎面便是热情的前台迎宾人员，他们秉承“五米注视、三米微笑、一米问候”的服务原则专迎宾客，并有专人协助办理乘机手续。
+            </p>
+            <p style="text-indent: 2em;">
+                <strong>舒馨之礼：</strong>分别被各企业冠名并带有冠名企业特色的休息室内，沙发柔软而舒适，大屏幕液晶电视和互联网能够满足候机时消遣和信息处理的需要，小茶点和咖啡、茶水等各式饮品美味以及报纸、杂志、书刊等休闲娱乐用品、针线盒、急救小药箱等让您在匆忙的旅途中享受到家的温馨。
+            </p>
+            <p style="text-indent: 2em;">
+                <strong>安逸之乐：</strong>当您走进宽敞明亮、弥漫着安逸氛围的休闲厅，会很自然地融入到这里轻松舒适的环境，这里是您进入个人专属的僻静一角。在这里，您会忘记漫长的等待时间，品一杯浓浓的咖啡、读一本休闲杂志，让您徜徉在这舒适自然的环境里，赏画、品茗、下棋亦或是思考养神，都倍感恬静怡然。
+            </p>
+            <p style="text-indent: 2em;">
+                <strong>香茗之乐：</strong>“摘鲜焙芳旋封裹，至精至好且不奢”，在旅途劳顿之时，一杯香茗会使您心旷神怡，精神焕发。在这里有专供您品茶的小木屋，精心为您准备了特色时令茶。专业的茶艺会让您感受到中国茶艺的魅力，在品味香茗的同时感受到中国传统文化的博大精深，让您的旅途情趣盎然！
+            </p>
+            <p style="text-indent: 2em;">
+                <strong>送行之道：</strong>当广播里传来“您所乘坐的航班现在开始登机”时，您不用着急，这里的服务人员会为您安排合适的登机时间。独立的贵宾安检通道，免去您排队等候的烦躁，舒适快捷的贵宾专用将为您送达机舱门口，让您顺利登机，带着这里的温馨一起旅行。
+            </p>
+            <p style="text-align: center;">
+                <img style="width: 100%" src="../static/img/gbstst.png">
+            </p>
+            <h5 class="sub-list-title">头等舱服务</h5>
+            <p style="text-align: center;font-weight: bold;">
+                商旅专属  乐享回报<br>
+                <span style="padding-left: 150px;">——机场头等舱休息室</span>
+            </p>
+            <p style="text-indent: 2em;">
+                进入机场头等舱休息室的旅客，是选择航空公司“两舱”（头等舱和公务舱）的旅客和航空公司较高级别的常旅客会员。为此，这里把宾至如归、以品质博得信任与支持作为服务的要求，用“无打扰式”、“ 一对一提醒”等服务，让这专属空间更加舒适、温馨，最终达到提高旅客忠诚度和美誉度的目的。
+            </p>
+            <p style="text-align: center;">
+                <img style="width: 100%" src="../static/img/tdc.png">
+            </p>
+            <h5 class="sub-list-title">安检服务</h5>
+            <p style="text-align: center;font-weight: bold;">
+                安检快捷服务
+            </p>
+            <p style="text-indent: 2em;">
+                在待检区入口处，设置专门的安检员，负责维序督导工作。维序督导的内容：提供安检知识咨询服务；提醒旅客提前处理随身携带的违规物品，方便旅客快捷过检；指引特殊旅客通过专用安检通道快捷过检；提醒非乘机旅客止步、行李推车止步，确保安检区秩序。
+            </p>
+            <p style="text-align: center;">
+                <img style="width: 100%" src="../static/img/aj.jpg">
+            </p>
+            <dl>
+                <dt>安检特殊旅客服务</dt>
+                <dd>
+                    <p style="text-indent: 2em;margin-bottom: 0px;">针对特殊旅客，安排专用安检通道，方便其快速过检。</p>
+                    <p style="text-indent: 2em;margin-bottom: 0px;">专用安检通道位置：候机楼二楼国内安检区贵宾通道、国际安检区工作人员通道。</p>
+                    <p style="text-indent: 2em;margin-bottom: 0px;">特殊旅客范围：70岁以上的老人、5—12岁的无成人陪伴儿童、病残旅客、孕妇及怀抱婴儿的旅客。</p>
+                </dd>
+            </dl>
+            <dl>
+                <dt>安检团队预约服务</dt>
+                <dd>
+                    <p style="text-indent: 2em;margin-bottom: 0px;">针对10人以上的团队旅客，可视情安排安检通道或加开安检通道。预约程序及要求：</p>
+                    <p style="text-indent: 2em;margin-bottom: 0px;">1、由团队随行导游凭导游证在航班起飞前一个小时联络安检入口处的维序督导员；</p>
+                    <p style="text-indent: 2em;margin-bottom: 0px;">2、维序督导员将安排安检通道，协助团队旅客快捷过检。</p>
+                    <p style="text-indent: 2em;margin-bottom: 0px;">特别提示：此项服务仅在春运期间提供。</p>
+                    <p style="text-align: center;">
+                        <img style="width: 100%" src="../static/img/ajyy.jpg">
+                    </p>
+                </dd>
+            </dl>
+            <dl>
+                <dt>二次安检免排服务</dt>
+                <dd>
+                    <p style="text-indent: 2em;">当旅客因办理行李托运需离开安检区，返回进行二次安检时可免于排队。旅客可凭加盖行李安检章的登机牌和有效身份证件，直接到达验证柜台，经检查确认后进入安检通道。</p>
+                    <p style="text-align: center;">
+                        <img style="width: 100%" src="../static/img/ecaj.jpg">
+                    </p>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+<div class="panel panel-default" style="margin-bottom: 0px;margin-top: 0px">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne3">
+                服务设施
+                <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+            </a>
+        </h4>
+    </div>
+    <div id="collapseOne3" class="panel-collapse collapse">
+        <div class="panel-body">
+            <h5 class="sub-list-title" style="margin-top: -5px;">总服务台</h5>
+            <p style="text-align: center;font-weight: bold;">
+                一路畅行，始于“五心”<br>
+                <span style="padding-left: 150px;">——候机大厅总服务台</span>
+            </p>
+            <p style="text-indent: 2em;">
+                总服务台位于候机楼二楼国内出发厅西侧中心位置,为您提供人工的航班问讯、指引、行李寄存、复印、公用电话、办理各种特殊旅客的申请手续等各种服务。
+            </p>
+            <p style="text-align: center;">
+                <img style="width: 100%" src="../static/img/zfwt.png">
+            </p>
+            <p style="text-indent: 2em;">
+                候机大厅总服务台“绿丝带”服务组，用“细心、真心、耐心、虚心”加“信心”构成了“五心”服务准则，用“爱心帮办服务”，为旅客排忧解难。如为协助无成人陪伴儿童、轮椅旅客登机，特推出了出行申请人与机场地服人员、机场地服人员与空中乘务员、空中乘务员与到达站地服人员、到达站地服人员与接站亲属的四次无缝交接举措。在确保孩子出行安全的前提下，实施“一对一”儿童陪护的专属待遇，从接收至与乘务员交接采用专人负责制，增加了无陪儿童心理上的安全感。与他们讲解沟通机场的布局、乘坐飞机时的注意事项，打消独自出行的紧张，让快乐乘行始于细心关爱中。为了方便伤残体弱旅客的出行，这里还提供了轮椅服务，从最贴合旅客需要的角度出发，体现服务工作尽善尽美，如考虑到旅客的身材因素，轮椅的型号也不尽相同等，让宾客的旅程成为“爱心传递之旅”。
+            </p>
+            <p style="text-indent: 2em;">
+                特别提示：  需要寄存行李的旅客，请到二楼国内出发厅将行李进行安全检查后，到总服务台办理行李寄存手续。服务人员会按照规定，根据实际寄存的天数和行李的体积收费，并放入独立的电子寄存柜内保管。
+            </p>
+            <p style="text-indent: 2em;">
+                服务时间：最早出发航班的乘机手续开办时间至最末出发航班的乘机手续截止时间。
+            </p>
+            <h5 class="sub-list-title">停车场</h5>
+            <dl>
+                <dt>停车服务</dt>
+                <dd>
+                    <p style="text-indent: 2em;">
+                        机场停车场位于候机楼前，占地面积5.3万平方米，配备了车辆引导装置、自动收费终端、中央管理系统、满位显示装置、出入口自动拍照装置等一系列的现代化配套设备。分别设小型车辆停车区、大型客车停车区、昼夜车衣区、长途专线停车区等区域，可同时停放各种机动车2300辆。出、入口共设有8条车辆通道，保证航班密集时的车辆顺畅通行。"四个一"的服务理念即"一张笑脸相迎，一声温情问候，一套规范作业，一声祝福平安"，受到社会各界广泛好评。
+                    </p>
+                    <p style="text-indent: 2em;">
+                        该停车场的收费标准由山东省物价局制定。停车费的收取本着"四公开"原则，即：收费项目、收费标准及收费方式公开；收费人员工作职责和行为规范公开；收费人员证号、工号公开；公开投诉监督电话，自觉接受社会监督。
+                    </p>
+                    <p style="text-align: center;">
+                        <img style="width: 100%" src="../static/img/cyfw.png">
+                    </p>
+                </dd>
+            </dl>
+            <dl>
+                <dt>停车场收费标准如下：</dt>
+                <dd>
+                    <p style="text-indent: 2em;">
+                        凡进入济南国际机场新航站楼停车场停车的机动车辆实行计时收费。具体标准为：小型车（17座以下，含17座）1小时内（含1小时，不足1小时按1小时计）每车收费5元，1小时后每车每1小时（含1小时）加收5元，24小时（含24小时）以内最高收费限额为每车次30元；大型车1小时内（含1小时，不足1小时按1小时计）每车收费10元，1小时后每车每1小时（含1小时）加收5元，24小时（含24小时）以内最高收费限额为每车次50元。
+                    </p>
+                </dd>
+            </dl>
+            <h5 class="sub-list-title">医疗急救中心</h5>
+            <p style="text-align: center;font-weight: bold;">
+                济南国际机场医疗急救中心简介
+            </p>
+            <p style="text-indent: 2em;font-weight: bold;">
+                候机楼二楼南头设急诊室    询诊电话：0531-82086511
+            </p>
+            <p style="text-indent: 2em;">
+                济南国际机场医疗急救中心隶属济南国际机场股份有限公司。主要职责是：执行国家有关医疗卫生法律法规；承担机场地区发生的各类紧急事件的应急医疗救护；为机场出入港旅客、航空公司机组人员、机场工作人员提供医疗急救、医疗保健、临时留验服务；提供医学咨询、健康教育服务；以及参与机场范围内传染病防制工作。
+            </p>
+            <p style="text-align: center;">
+                <img style="width: 100%" src="../static/img/jjzx.png">
+            </p>
+            <p style="text-indent: 2em;">
+                医疗急救中心建筑面积2000平方米，距离航站楼1公里，位于机场北工作区，跑道的西侧。在航站楼二楼出发厅南侧，设有面积为40平方米的急救站。主要为航站楼区域内工作人员和旅客提供一般医疗服务和应急医疗服务。中心现有人员20人，其中专业技术人员15人。
+            </p>
+            <p style="text-indent: 2em;">
+                为普及急救知识，做好机场救护工作，医疗急救中心每年对机场员工特别是消防、公安、安检、客服等一线人员和担架队员进行急救技术培训。
+            </p>
+            <p style="text-align: center;">
+                <img style="width: 100%" src="../static/img/jjxc.jpg">
+            </p>
+            <p style="text-indent: 2em;">
+                中心内设有门诊室、抢救室、治疗室、观察室、口腔科、生化室、X光室、B超室、心电图室、理疗室及急救器材仓库等。在中心设有符合标准的微生物实验室和隔离留验室，用于传染病人和疑似病人临时留验观察，室内设置了独立的通风系统和污水处理装置。
+            </p>
+            <p style="text-indent: 2em;">
+                依据《民用航空运输机场应急救护设备配备》（GB18040-2000），中心配备了500mA国产X光机、GE200aB超诊断仪、自动体外心脏除颤仪、心电监护仪、呼吸机、心电图机、全自动生化分析仪等大、中型医疗设备。配备了复苏型救护车1辆，普通型救护车1辆。
+            </p>
+            <p style="text-indent: 2em;">
+                机场医疗急救中心依据国家医疗卫生法律、法规，国际民航组织《机场勤务手册》以及《国际卫生条例》，在医疗卫生和传染病防制方面制定了一系列有效的管理制度、工作流程，强化基础管理和人员培训，定期组织应急救援单项演练或桌面演练，有力地保证了医疗急救、卫生防疫等各项工作的有序开展。
+            </p>
+            <h5 class="sub-list-title">银行</h5>
+            <p style="text-indent: 2em;">
+                在航站楼二楼南侧设有工商银行，为您提供人民币、主要外币币种的存款、信用卡服务，并可办理国内汇票、支票、汇兑及国际汇兑、外币兑换、代售代兑旅行支票等业务，并设有ATM自动提款机。
+            </p>
+            <p style="text-align: center;">
+                <img style="width: 100%" src="../static/img/yh.png">
+            </p>
+            <h5 class="sub-list-title">行李手推车</h5>
+            <p style="text-indent: 2em;">
+                航站楼各区域均有行李手推车供旅客使用，旅客可以免费使用行李手推车
+            </p>
+            <p style="text-align: center;">
+                <img style="width: 100%" src="../static/img/xlstc.png">
+            </p>
+            <h5 class="sub-list-title">饮用水</h5>
+            <p style="text-indent: 2em;">
+                航站楼内为您设置了多台自助饮水机，遍及楼内旅客集中区域。（配有一次性纸杯）
+            </p>
+            <p style="text-align: center;">
+                <img src="../static/img/yys.png">
+            </p>
+            <h5 class="sub-list-title">免费充电电源</h5>
+            <p style="text-indent: 2em;">
+                在航站楼内多处设有免费电源，方便旅客使用。
+            </p>
+            <p style="text-align: center;">
+                <img src="../static/img/mfcddy.png">
+            </p>
+        </div>
+    </div>
+</div>
+<div class="panel panel-default" style="margin-bottom: 0px;margin-top: 0px">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne4">
+                城市候机楼
+                <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+            </a>
+        </h4>
+    </div>
+    <div id="collapseOne4" class="panel-collapse collapse">
+        <div class="panel-body">
+            <h5 class="sub-list-title" style="margin-top: -5px;">济南美得乐大酒店</h5>
+            <p style="text-indent: 2em;">
+                服务热线：0531-66892777
+            </p>
+            <p style="text-indent: 2em;">
+                地址：济南市区城市候机楼，历山路美德乐大酒店
+            </p>
+            <h5 class="sub-list-title">青州城市候机楼</h5>
+            <p style="text-indent: 2em;">
+                服务热线：0538-8487888
+            </p>
+            <p style="text-indent: 2em;">
+                地址：空港城市候机楼，云门北路312号
+            </p>
+            <h5 class="sub-list-title">淄博城市候机楼</h5>
+            <p style="text-indent: 2em;">
+                淄博候机楼由淄博国旅投资兴建，位于淄博市张店区柳泉路107号国贸大厦一楼。淄博及周边的广大旅客可以在该城市候机楼实时查询航班信息、订票购票、办理乘机手续。目前，已经有潍坊市的多家旅行社与淄博城市候机楼签署协议。
+            </p>
+            <p style="text-indent: 2em;">
+                开通直达班车，通过提升服务增强济南机场对周边各地市辐射能力，是吸引陆路交通旅客乘坐飞机，增加航空客源的有力措施。目前，机场先后开通了直达淄博、东营、泰安、济宁四城市旅客班车，泰安、淄博两地先后设立了城市候机楼。今后，机场将积极与其他各地市联系，实现机场与更多地市的“空地无缝连接”，为广大旅客提供方便、快捷的航空服务。
+            </p>
+            <p style="text-indent: 2em;">
+                服务热线：0533-7977777
+            </p>
+            <p style="text-indent: 2em;">
+                地址：张店区柳泉路107号国贸大厦一楼
+            </p>
+            <h5 class="sub-list-title">泰安城市候机楼</h5>
+            <p style="text-indent: 2em;">
+                泰安城市候机楼坐落于泰山脚下，这是山东省第一家采用异地值机、直接登机模式的城市候机楼，泰安旅客可在城市候机楼购买机票和现场办理值机手续，乘坐机场快线直达济南机场，经过安检后直接登机，比过去节省2个小时。目前，直达机场的快线暂定为每天四班，以后随着旅客人数增加，将加密快线班次。            </p>
+            <p style="text-indent: 2em;">
+                今后机场还将逐步推进其他城市候机楼的建设，让更多旅客享受便利、快捷的乘机服务。
+            </p>
+            <p style="text-indent: 2em;">
+                服务热线：0536-3288596
+            </p>
+            <p style="text-indent: 2em;">
+                地址：泰山航空港，东岳大街西首
+            </p>
+            <h5 class="sub-list-title">济宁城市候机楼</h5>
+            <p style="text-indent: 2em;">
+                服务热线：0537-2208999
+            </p>
+            <p style="text-indent: 2em;">
+                地址：济宁航空港，汽车北站北部
+            </p>
+            <h5 class="sub-list-title">莱芜城市候机楼</h5>
+            <p style="text-indent: 2em;">
+                服务热线：0634-6883777
+            </p>
+            <p style="text-indent: 2em;">
+                地址：济南机场莱芜候机厅，文化南路001号
+            </p>
+
+        </div>
+    </div>
+</div>
+<div class="panel panel-default" style="margin-bottom: 0px;margin-top: 0px">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne5">
+                宾馆预订
+                <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+            </a>
+        </h4>
+    </div>
+    <div id="collapseOne5" class="panel-collapse collapse">
+        <div class="panel-body">
+            <p style="text-align: center;font-weight: bold;">济南国际机场宾馆</p>
+            <p style="text-indent: 2em;">
+                济南国际机场宾馆是山东机场有限公司投资兴建的唯一一家功能性主题涉外酒店，是济南地区唯一能为旅客提供与候机楼同步滚动式航班动态信息和一条龙乘机服务的配套宾馆。
+            </p>
+            <p style="text-indent: 2em;">
+                宾馆坐落于济南遥墙国际机场北300米,拥有套房、标准间，三人间、商务单间共118间，其中豪华套房内设风靡欧美的第三代保健光波浴房，给人一种至尊至上的享受。宾馆在客房、大堂、餐厅等设有与候机楼同步滚动式最新航班信息。
+            </p>
+            <p style="text-indent: 2em;">
+                济南国际机场宾馆按照机场公司创建文明单位的要求，积极参加济南市开展的“创建文明城市”活动，向乘机旅客推出“无缝隙”专业化服务：<strong>“您来我宾馆，我送您乘机”</strong>，被济南市确定为政府要办的“百件实事”之一。
+            </p>
+            <p style="text-align: center;">
+                <img style="width: 100%" src="../static/img/bgyd.jpg">
+            </p>
+            <p style="text-align: center;font-weight: bold;">济南国际机场宾馆十项服务承诺</p>
+            <p style="text-indent: 2em;">
+                一、  全心全意为济南机场广大旅客提供优质服务；
+            </p>
+            <p style="text-indent: 2em;">
+                二、  推行“首问负责制”，力所能及的为客人提供航班信息问询、订票、接送站、（宾馆——候机楼）、代办乘机手续、打包、托运行李等“一条龙”服务；
+            </p>
+            <p style="text-indent: 2em;">
+                三、  讲普通话、使用规范服务用语；
+            </p>
+            <p style="text-indent: 2em;">
+                四、  呼入电话保证在三次振铃内接听；
+            </p>
+            <p style="text-indent: 2em;">
+                五、  保证不在回答完问题后，在对方还没有反应的情况下先挂机；
+            </p>
+            <p style="text-indent: 2em;">
+                六、  保证不对客人说“我不”、“不行”等服务禁语；
+            </p>
+            <p style="text-indent: 2em;">
+                七、  保证不打断客人的讲话，不与客人争辩和反驳；
+            </p>
+            <p style="text-indent: 2em;">
+                八、  保证不对客人提供虚假服务信息；
+            </p>
+            <p style="text-indent: 2em;">
+                九、  保证不私自对外泄露客人信息；
+            </p>
+            <p style="text-indent: 2em;">
+                十、  严格履行“您来我宾馆，我送您乘机”的服务主题。
+            </p>
+            <p style="text-align: center;font-weight: bold;">宾馆餐饮文化——九月天餐厅</p>
+            <p style="text-indent: 2em;">
+                还是那句老话——民以食为天。
+            </p>
+            <p style="text-align: center;">
+                <img style="width: 100%" src="../static/img/ct1.jpg">
+            </p>
+            <p style="text-align: center;">
+                <img style="width: 100%" src="../static/img/ct2.jpg">
+            </p>
+            <p style="text-indent: 2em;">
+                为了更好的为乘机旅客提供优质服务，机场宾馆于2010年引进九月天餐厅。作为济南时尚餐厅的一员，“九月天”餐厅在各方面都显现了自己的独到之处。和传统餐厅不同，时尚餐厅大胆地“抛弃”了俗气的名字、菜品、装修、服务等，目的是要营造一种个性和时尚的就餐环境。于是，时尚餐厅被赋予了或时尚、或充满诗意的新代号。他们把东南亚菜、欧式菜肴的特点糅合到中国菜中；把小桥流水、钢筋水泥、若隐若现的灯光、轻纱罗曼搬进了店堂；把客人的需要作为自己的服务目标。
+            </p>
+            <p style="text-indent: 2em;">
+                累了，想歇歇了，想感受美味了，那么来机场宾馆，来九月天。
+            </p>
+            <p style="text-align: center;">
+                <img src="../static/img/tsfwnrx.png">
+            </p>
+            <p style="text-indent: 2em;">
+                一是旅客可以在宾馆的客房、大堂了解到最新的航班动态，只要提前30分钟过安检，就可以“一步登机”；
+            </p>
+            <p style="text-indent: 2em;">
+                二是为旅客提供雨伞、行李车、免费行李打包；
+            </p>
+            <p style="text-indent: 2em;">
+                三是免费提供接送站服务、房间免费上网服务；
+            </p>
+            <p style="text-indent: 2em;">
+                四是为残疾人提供轮椅和残疾人通道；
+            </p>
+            <p style="text-indent: 2em;">
+                五是住宿当天存车免费；
+            </p>
+            <p style="text-indent: 2em;">
+                六是为旅客提供预定酒店、代订代购机票、长途汽车票等服务。
+            </p>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+<div class="panel panel-default" style="margin-bottom: 0px;margin-top: 4px;">
+<div class="panel-heading" style="border-bottom: 2px solid #5fa8cb;background-color: #E9E6E6">交通指南</div>
+<div class="panel-body" style="padding: 0px">
+<div class="panel-group" style="margin-bottom: 0px" id="accordion2">
+<div class="panel panel-default" style="margin-bottom: 0px;margin-top: 0px">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo1">
+                机场大巴
+                <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+            </a>
+        </h4>
+    </div>
+    <div id="collapseTwo1" class="panel-collapse collapse">
+        <div class="panel-body">
+            <p style="text-align: center;">
+                <img src="../static/img/jcdb.jpg" style="width: 100%">
+            </p>
+            <dl>
+                <dt>一、济南国际机场→市区</dt>
+                <dd>
+                    <p style="text-indent: 2em;margin-bottom: 0px;">1、发车时间：根据机场落地航班抵达时间流水发车</p>
+
+                    <p style="text-indent: 2em;margin-bottom: 0px;">2、发车地点：候机楼一楼到达厅3、4号门</p>
+
+                    <p style="text-indent: 2em;margin-bottom: 0px;">3、行车路线：<br>
+                        （1）早班落地航班至晚18：00落地航班行车路线：济南机场出发，中途大明湖北门站点，终点火车站广场汽车站。<br>
+                        （2）晚18：00后旅客巴士行车路线：济南机场出发，中途历山路南口站点，终点玉泉森信大酒店。</p>
+                </dd>
+            </dl>
+            <dl>
+                <dt>二、济南市区→济南国际机场</dt>
+                <dd>
+                    <p style="text-indent: 2em;margin-bottom: 0px;">1号线：火车站广场汽车站早6：00至晚19：00每小时正点发车，一站直达机场</p>
+
+                    <p style="text-indent: 2em;margin-bottom: 0px;">
+                        2号线：玉泉森信大酒店早6：00至晚19：00发车，途径美得乐大酒店站点，直达机场，机场航班高峰时段或客流量高峰期此线路调整为流水发车。</p>
+                </dd>
+            </dl>
+            <dl>
+                <dt>三、售票地点</dt>
+                <dd>
+                    <p style="text-indent: 2em;margin-bottom: 0px;">
+                        机场出发旅客巴士售票地点：候机楼一楼到达厅3、4号门北侧旅客巴士售票柜台。
+                    </p>
+
+                    <p style="text-indent: 2em;margin-bottom: 0px;">市区至机场1号线售票地点：火车站广场汽车站售票窗口。</p>
+
+                    <p style="text-indent: 2em;margin-bottom: 0px;">市区至机场2号线售票地点：玉泉大酒店旅客巴士车前售票（85108571）</p>
+
+                    <p style="text-indent: 2em;margin-bottom: 0px;">美得乐大酒店大堂售票（66898777）</p>
+
+                    <p style="text-indent: 2em;margin-bottom: 0px;">票　价：单程20元/人。</p>
+
+                    <p style="text-indent: 2em;margin-bottom: 0px;">注：以上行车线路如遇特殊情况，按机场方面通知为准。</p>
+
+                    <p style="text-indent: 2em;margin-bottom: 0px;">友情提示：请乘车旅客看管好随身物品，凭票上车，终点检票，祝您旅途愉快。</p>
+
+                    <p style="text-indent: 2em;margin-bottom: 0px;">全省统一客服电话：0531-96888。</p>
+                    </p>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+<div class="panel panel-default" style="margin-bottom: 0px;margin-top: 0px">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo2">
+                地面公交
+                <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+            </a>
+        </h4>
+    </div>
+    <div id="collapseTwo2" class="panel-collapse collapse">
+        <div class="panel-body">
+            <dl>
+                <dt>（1）进机场旅客班车:</dt>
+                <dd>
+                    <p style="text-indent: 2em;margin-bottom: 0px;">
+                        ①号线：火车站广场汽车站早6：00至晚19：00每小时正点发车，一站直达机场
+                    </p>
+
+                    <p style="text-indent: 2em;margin-bottom: 0px;">
+                        ②号线：玉泉森信大酒店早6：00至晚19：00每小时整点发车，一站直达机场，机场航班高峰时段或客流量高峰期此线路调整为流水发车。
+                    </p>
+                </dd>
+            </dl>
+            <dl>
+                <dt>（2）出机场旅客班车：</dt>
+                <dd>
+                    <p style="text-indent: 2em;margin-bottom: 0px;">
+                        ①早晨落地航班至晚18：00之前落地航班前行车路线：济南机场直达火车站广场汽车站。
+                    </p>
+
+                    <p style="text-indent: 2em;margin-bottom: 0px;">
+                        ②晚18：00后旅客巴士行车路线：济南机场出发沿经十东路向西运行，中途在历山路南口设立停靠站点，青年东路右转至终点站玉泉森信大酒店注：北园路全线贯通后，由机场出发的旅客班车将按照机场－高速公路－全福庄立交桥－北园大街－长途汽车总站路线行驶。<br>
+                        票价：单程20元/人。
+                    </p>
+                </dd>
+            </dl>
+            <dl>
+                <dt>（3）公交快速专线:</dt>
+                <dd>
+                    <p style="text-indent: 2em;margin-bottom: 0px;">①济南西客站—机场1号快速专线</p>
+
+                    <p style="text-indent: 2em;margin-bottom: 0px;">1号专线为高速直达专线，双向对发，整点发车，每小时一班，单程营运时间48分钟，票价25元/人。<br>
+
+                    <p style="text-indent: 2em;margin-bottom: 0px;">西客站发车：09:00——20:00</p>
+
+                    <p style="text-indent: 2em;margin-bottom: 0px;">机场发车：09:00——20:00</p>
+
+                    <p style="text-indent: 2em;margin-bottom: 0px;">西客站乘车地点：西客站西广场</p>
+
+                    <p style="text-indent: 2em;margin-bottom: 0px;">机场乘车地点：机场站前停车场P12停车区（机场肯德基店南邻）</p>
+
+                    <p style="text-indent: 2em;margin-bottom: 0px;">②西客站—机场2号快速专线</p>
+
+                    <p style="text-indent: 2em;margin-bottom: 0px;">
+                        2号专线贯穿经十路运行，途经站点为济南西客站—段兴西路—营市街—五里牌坊—八一立交桥西—省体育中心—千佛山—燕山立交桥西—龙奥大厦北门—高新区管委会—济南机场。双向对发，半点发车，每小时一班，单程运行时间1小时48分钟，票价25元/人。</p>
+
+                    <p style="text-indent: 2em;margin-bottom: 0px;"> 西客站发车：09:30——20:30</p>
+
+                    <p style="text-indent: 2em;margin-bottom: 0px;">机场发车：09:30——20:30</p>
+
+                    <p style="text-indent: 2em;margin-bottom: 0px;">西客站乘车地点：西客站东广场公交枢纽3号站台</p>
+
+                    <p style="text-indent: 2em;margin-bottom: 0px;">机场乘车地点：机场站前停车场P12停车区</p>
+
+                </dd>
+            </dl>
+            <dl>
+                <dt>（4）309路公交车:</dt>
+                <dd>
+                    <p style="text-indent: 2em;margin-bottom: 0px;">
+                        ①号线：行车路线：机场至孟家 全程20个站点 发车时间：首班5：30 末班 17：00
+                    </p>
+
+                    <p style="text-indent: 2em;margin-bottom: 0px;">票价：2元/人</p>
+                    </p>
+                </dd>
+            </dl>
+            <p>监督电话：82086555 82086536</p>
+        </div>
+    </div>
+</div>
+<div class="panel panel-default" style="margin-bottom: 0px;margin-top: 0px">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo3">
+                长途联运
+                <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+            </a>
+        </h4>
+    </div>
+    <div id="collapseTwo3" class="panel-collapse collapse">
+        <div class="panel-body">
+            <p style="text-indent: 2em;">
+                机场长途客运站自08年5月成立以来，目前已开通淄博、东营、泰安、济宁、滨州、青州、德州、聊城、寿光、莱芜、潍坊的客运班车，覆盖了15个县市区，日发班次87班。并在候机楼设置长途远程售票柜台，旅客可在机场购票，由机场巴士中转至市区长途客运站，通达省内外120余个地市，为旅客出行提供了全方位立体保障。
+            </p>
+
+            <p style="text-indent: 2em;">
+                客运站日运营情况：淄博18班。东营12班，途经广饶。泰安8班。济宁8班，途经曲阜、兖州。青州5班。滨州6班。德州6班。聊城7班。寿光4班。莱芜4班。潍坊6班。
+            </p>
+
+            <p style="margin-bottom: 0px;">
+                ◆淄博 每天18班，路程约1小时30分钟，途径周村。
+            </p>
+
+            <p style="text-indent: 2em;margin-bottom: 0px;">淄博售票处位于国贸大厦鲁中城市候机楼。联系电话：0533-7977777。</p>
+
+            <p style="text-indent: 2em;margin-bottom: 0px;">机场—淄博 8:00 9:40 10:40 11:30 12:10 13:00 13:40 14:30 15:10
+                15:50 16:30 17:10
+                17:50 18:30
+                19:10 20:00 21:00 22:00</p>
+
+            <p style="text-indent: 2em;">淄博—机场 5:00 5:30 7:00 8:00 8:40 9:20 10:00 10:50 11:40 12:30 13:30 14:20 15:00
+                15:40 16:20
+                17:00 17:50 18:30
+            </p>
+
+            <p style="margin-bottom: 0px;">
+                ◆东营 每天13班，路程约2小时40分钟，途径广饶。</p>
+
+            <p style="text-indent: 2em;margin-bottom: 0px;">
+                东营售票处位于北一路白云饭店。联系电话：13675467355（0546-8235789）。</p>
+
+            <p style="text-indent: 2em;margin-bottom: 0px;">
+                机场—东营 10:30 11:30 12:30 13:30 14:30 15:30 16:30 17:30 18:30 19:30 20:30 21:30 23:00</p>
+
+            <p style="text-indent: 2em;">
+                东营—机场 5:00 6:30 7:30 8:30 9:30 10:30 11:30 12:30 13:30 14:30 15:30 16:30 17:30</p>
+
+            <p style="margin-bottom: 0px;">
+                ◆泰安 每天8班，路程约1小时30分钟。</p>
+
+            <p style="text-indent: 2em;margin-bottom: 0px;">
+                泰安售票处位于泰山航空港（市体育场西临200米）。联系电话：0538-8502600。</p>
+
+            <p style="text-indent: 2em;margin-bottom: 0px;">
+                机场—泰安 10:30 12:00 13:30 15:00 16:30 18:00 19:30 21:00</p>
+
+            <p style="text-indent: 2em;margin-bottom: 0px;">
+                泰安—机场 4:50 8:00 9:30 11:30 13:30 15:00 16:30 17:40
+            </p>
+
+            <p style="margin-bottom: 0px;">
+                ◆济宁 每天9班，路程约3小时。</p>
+
+            <p style="text-indent: 2em;margin-bottom: 0px;">
+                济宁售票处位于济宁航空港（汽车北站北临）。联系电话：0537-2208999。</p>
+
+            <p style="text-indent: 2em;margin-bottom: 0px;">
+                机场—济宁 10:40 12:00 13:00 14:00 15:15 16:30 17:30 19:00 20:40</p>
+
+            <p style="text-indent: 2em;">
+                济宁—机场 6:00 7:00 8:00 9:00 10:00 11:00 12:30 13:30 15:00
+            </p>
+
+            <p style="margin-bottom: 0px;">
+                ◆青州 每天5班，路程约2小时。</p>
+            <p style="text-indent: 2em;margin-bottom: 0px;">
+                青州售票处位于青州空港城市候机楼（云门山北路312号）。联系电话：0536-3268111。</p>
+            <p style="text-indent: 2em;margin-bottom: 0px;">
+                机场—青州 11:20 13:20 15:30 17:30 19:30</p>
+            <p style="text-indent: 2em;">
+                青州—机场 5:00?8:00?10:30 13:30 15:30
+            </p>
+
+            <p style="margin-bottom: 0px;">
+                ◆滨州 每天6班，路程约2小时。</p>
+            <p style="text-indent: 2em;margin-bottom: 0px;">
+                公交枢纽中心（黄河三路渤海五路路口）。联系电话：13181019983。</p>
+            <p style="text-indent: 2em;margin-bottom: 0px;">
+                机场—滨州 11:00 12:30 13:30 15:30 17:30 19:30</p>
+            <p style="text-indent: 2em;">
+                滨州—机场 4:30 6:30 8:30 10:30 13:30 16:00
+            </p>
+
+            <p style="margin-bottom: 0px;">
+                ◆德州 每天6班，路程约2小时。</p>
+            <p style="text-indent: 2em;margin-bottom: 0px;">
+                德州售票处位于德州长途客运站。电话：0534-2617624。</p>
+            <p style="text-indent: 2em;margin-bottom: 0px;">
+                机场—德州 11:00 12:00 13:00 15:00 17:00 19:00</p>
+            <p style="text-indent: 2em;">
+                德州—机场 5:00 8:00 10:00 12:00 14:00 16:00
+            </p>
+
+            <p style="margin-bottom: 0px;">
+                ◆聊城 每天8班，路程约2小时。</p>
+            <p style="text-indent: 2em;margin-bottom: 0px;">
+                聊城售票处位于聊城长途汽车总站。联系电话：0635-96596。</p>
+            <p style="text-indent: 2em;margin-bottom: 0px;">
+                机场—聊城 10:30 12:00 13:30 15:00 16:20 17:40 19:00 20:30</p>
+            <p style="text-indent: 2em;">
+                聊城—机场 5:00 8:00 9:30 11:00 13:00 14:00 16:00 17:30
+            </p>
+
+            <p style="margin-bottom: 0px;">
+                ◆寿光 每天4班，路程约2小时，途径昌乐。</p>
+            <p style="text-indent: 2em;margin-bottom: 0px;">
+                寿光售票处位于寿光晨鸣国际大酒店。联系电话：0536-2236222。</p>
+            <p style="text-indent: 2em;margin-bottom: 0px;">
+                机场—寿光 11:00 13:00 17:00 19:00</p>
+            <p style="text-indent: 2em;">
+                寿光—机场 5:00 8:00 14:00 16:00
+            </p>
+
+            <p style="margin-bottom: 0px;">
+                ◆莱芜 每天4班，路程约1小时30分钟。</p>
+            <p style="text-indent: 2em;margin-bottom: 0px;">
+                莱芜售票处位于莱芜航空港（汶源东大街9号大润发西邻）。联系电话：0634-6883777。</p>
+            <p style="text-indent: 2em;margin-bottom: 0px;">
+                机场—莱芜 11:00 13:30 16:30 18:00</p>
+            <p style="text-indent: 2em;">
+                莱芜—机场 8:30 10:00 13:30 16:00
+            </p>
+
+            <p style="margin-bottom: 0px;">
+                ◆潍坊 每天6班，路程约2小时30分钟。</p>
+            <p style="text-indent: 2em;margin-bottom: 0px;">
+                潍坊售票处位于鸢飞大酒店。联系电话：0536-8283377，18253603377。</p>
+            <p style="text-indent: 2em;margin-bottom: 0px;">
+                机场—潍坊 11:00 12:30 14:00 16:00 18:30 21:20</p>
+            <p style="text-indent: 2em;">
+                潍坊—机场 4:00 7:00 9:30 11:30 14:30 16:30
+            </p>
+        </div>
+    </div>
+</div>
+<div class="panel panel-default" style="margin-bottom: 0px;margin-top: 0px">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo4">
+                停车场
+                <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+            </a>
+        </h4>
+    </div>
+    <div id="collapseTwo4" class="panel-collapse collapse">
+        <div class="panel-body">
+            <p style="text-align: center;">
+                <img src="../static/img/jcjt-3.jpg" style="width: 100%">
+            </p>
+
+            <p style="text-indent: 2em">
+                机场停车场位于候机楼前，占地面积5.3万平方米，配备了车辆引导装置、自动收费终端、中央管理系统、满位显示装置、出入口自动拍照装置等一系列的现代化配套设备。分别设小型车辆停车区、大型客车停车区、昼夜车衣区、长途专线车停车区等停车区域，可同时停放各种机动车2300辆。出、入口共设有8条车辆通道，正常情况下能保证航班密集时的车辆顺畅通行。“四个一”的服务理念即“一张笑脸相迎，一声温情问候，一套规范作业，一声祝福平安”，受到社会各界广泛好评。
+            </p>
+
+            <p style="text-indent: 2em">
+                该停车场的收费标准由山东省物价局制定。停车费的收取本着“四公开”原则，即：收费项目、收费标准及收费方式公开；收费人员工作职责和行为规范公开；收费人员证号、工号公开；公开投诉监督电话，自觉接受社会监督。
+            </p>
+
+            <p style="text-indent: 2em;margin-bottom: 0px;">停车场收费标准如下：</p>
+
+            <p style="text-indent: 2em">
+                凡进入济南国际机场新航站楼停车场停车的机动车辆实行计时收费。具体标准为：小型车（17座以下，含17座）1小时内（含1小时，不足1小时按1小时计）每车收费5元，1小时后每车每1小时（含1小时）加收5元，24小时（含24小时）以内最高收费限额为每车次30元；大型车1小时内（含1小时，不足1小时按1小时计）每车收费10元，1小时后每车每1小时（含1小时）加收5元，24小时（含24小时）以内最高收费限额为每车次50元。
+            </p>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+<div class="panel panel-default" style="margin-bottom: 0px;margin-top: 4px;">
+<div class="panel-heading" style="border-bottom: 2px solid #5fa8cb;background-color: #E9E6E6">航空货运</div>
+<div class="panel-body" style="padding: 0px">
+    <div class="panel-group" style="margin-bottom: 0px" id="accordion3">
+        <div class="panel panel-default" style="margin-bottom: 0px;margin-top: 0px">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion3" href="#collapseThree1">
+                        发货须知
+                        <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseThree1" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <p style="text-align: center;"><strong>国内出发货物发运</strong></p>
+
+                    <p style="text-indent: 2em;">
+                        1.索取、填写货物托运书。请按货物托运书填写：目的站、收货人姓名、收货人地址、收货人邮政编码、收货人联系电话、托运人姓名、托运人地址、托运人邮政编码、托运人联系电话、货物名称、件数、包装、重量、是否投保运输险、储运注意事项、托运单位、经手人身份证号码、经手人签名等项目。填写务必准确、清晰。
+                    </p>
+
+                    <p style="text-indent: 2em;">
+                        2.将填写好的货物托运书交安检员并将货物通过安全检查。为保证乘机旅客、交运货物、飞机的安全，货物必须经过X光机或安检员的检查。
+                    </p>
+
+                    <p style="text-indent: 2em;">
+                        3.经过安全检查的货物由工作人员过秤。货物重量按毛重计算，计量单位为公斤。重量不足1公斤的尾数四舍五入。每张航空货运单的货物重量不足1公斤时，按1公斤计算。贵重物品按实际毛重计算，计算单位为0.1公斤。非宽体飞机载运的货物，每件货物重量一般不超过80公斤，体积一般不超过40X60X100厘米。宽体飞机载运的货物，每件货物重量一般不超过250公斤，体积一般不超过100X100X140厘米。超过以上重量和体积的货物，承运人可依据机型及出发地和目的地机场的装卸设备条件，确定可收运货物的最大重量和体积。每件货物的长、宽、高之和不得小于40厘米。每公斤货物体积超过6000立方厘米的，为轻泡货物。轻泡货物以每6000立方厘米折合1公斤计重。
+                    </p>
+
+                    <p style="text-indent: 2em;">
+                        4.将填写好货物重量的托运书交工作人员制单，出票工作人员根据货物托运书填开货物运输凭证和发票。如对货物投保运输险，请明确告诉工作人员。
+                    </p>
+
+                    <p style="text-indent: 2em;">
+                        5.交付运费后，从工作人员处拿到发票及货单即完成货物托运。
+                    </p>
+
+                    <p style="font-weight: bold;">
+                        业务电话：<br>
+                        省内客户可直接拨打96888—3（货运业务）（按市话计费）<br>
+                        传真：0531-82086600
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default" style="margin-bottom: 0px;margin-top: 0px">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion3" href="#collapseThree2">
+                        收货须知
+                        <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseThree2" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <p style="text-align: center;font-weight: bold;">国内到达货物提取</p>
+
+                    <p style="text-indent: 2em;">
+                        1.收货人应承运人指定的提货地点提取货物。对活体动物、鲜活易腐货物及其它指定航班的货物，托运人应负责通知收货人到目的地机场等候提取。
+                    </p>
+
+                    <p style="text-indent: 2em;">
+                        2.除托运人与承运人另有约定外，货物只交付给航空货运单上的收货人。
+                    </p>
+
+                    <p style="text-indent: 2em;">
+                        3.收货人应当凭本人有效身份证件提货。必要时，收货人应当提供盖有公章的提货证明。
+                    </p>
+
+                    <p style="text-indent: 2em;">
+                        4.收货人提取货物时，发现货物丢失、短少、变质、损坏或延误到达等情况，应当场提出导议，由承运人按规定填写货物运输事故记录，并由双方签字或盖章。
+                    </p>
+
+                    <p style="text-indent: 2em;">
+                        5.收货人提取货物并在航空货运单上签字而未提出导议，则视为按运输合同规定货物已完好交付。
+                    </p>
+
+                    <p style="text-indent: 2em;">
+                        6.每一张货运单只允许有一个收货人。
+                    </p>
+
+                    <p style="text-align: center;font-weight: bold;">
+                        国际到达货物提取
+                    </p>
+
+                    <p style="text-indent: 2em;">
+                        货物到达目的站后，货运部门根据货运单所列收货人信息，用到货通知单或电话通知的形式通知报关行，由报关行通知实际收货人。报关行根据收货人的委托到机场国际货运监管仓库办理相关提货手续，报关行在提货前应办妥海关、检疫等放行手续，并付清相关费用（如到付运费、保管费等）。
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default" style="margin-bottom: 0px;margin-top: 0px">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion3" href="#collapseThree3">
+                        货运服务
+                        <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseThree3" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <p style="text-align: center;font-weight: bold;">
+                        货运特色产品及服务
+                    </p>
+                    <dl>
+                        <dt>一、特色产品：</dt>
+                        <dd>
+                            <p style="text-indent: 2em;margin-bottom: 0px;">
+                                1.全权代理济南地区多家航空公司货运服务，为客户提供最优惠的航空货物运输价格。
+                            </p>
+
+                            <p style="text-indent: 2em;margin-bottom: 0px;">
+                                2.当日通达全国各地。
+                            </p>
+
+                            <p style="text-indent: 2em;margin-bottom: 0px;">
+                                3.通过汉城、台北、北京、广州等中转枢纽，建立国际货运网络。至汉城、台北当日到达；至东南亚、欧、美一线城市次日到达；至欧、美二线城市隔日到达。
+                            </p>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>二、特色服务：</dt>
+                        <dd>
+                            <p style="text-indent: 2em;margin-bottom: 0px;">
+                                1.一站式咨询：24小时不间断咨询服务，为客户提供发货、提货、包装等有关航空货运方面的全方位一站式服务。</p>
+
+                            <p style="text-indent: 2em;margin-bottom: 0px;">
+                                2.开设候机楼小件货物快速通道。您最迟可以在航班起飞前一个半小时到20—22号值机柜台办理相关手续。</p>
+
+                            <p style="text-indent: 2em;margin-bottom: 0px;">3.提供快速提货服务。</p>
+
+                            <p style="text-indent: 2em;margin-bottom: 0px;">4.提供有偿包装服务，免费货物加固服务。</p>
+
+                            <p style="text-indent: 2em;margin-bottom: 0px;">
+                                5.根据客户的需求，为客户办理大宗货物上门提货业务，让客户足不出户即可发货。</p>
+
+                            <p style="text-indent: 2em;margin-bottom: 0px;">6.代办货物发运手续。</p>
+
+                            <p style="text-indent: 2em;margin-bottom: 0px;">7.提供由收货人支付航空运费的服务项目。</p>
+
+                            <p style="text-indent: 2em;margin-bottom: 0px;">8.为大宗货物的运输联系包机服务。</p>
+
+                            <p style="text-indent: 2em;margin-bottom: 0px;">9.根据货物的品质或货主的要求提供从收运到装机的全程跟踪服务。</p>
+
+                            <p style="text-indent: 2em;margin-bottom: 0px;">10.为客户提供到达目的站的提货、送货上门的服务。</p>
+                        </dd>
+                    </dl>
+                    <p style="font-weight: bold;">
+                        业务电话：<br>
+                        省内客户可直接拨打96888—3（货运业务）（按市话计费）<br>
+                        传真：0531-82086600
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default" style="margin-bottom: 0px;margin-top: 0px">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion3" href="#collapseThree4">
+                        物流中心
+                        <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseThree4" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <p style="text-align: center;font-weight: bold;">
+                        济南国际机场物流中心简介
+                    </p>
+
+                    <p style="text-indent: 2em;">
+                        济南国际机场物流中心作为济南国际机场的重要板块,是一家人员齐备、功能齐全、设施完善、服务到位、安全高效的现代化航空物流企业。中心始终遵循团结、安全、效益、发展的经营理念，以提供安全、优质、方便的航空货运服务为己任,力争使机场货运业务成为济南机场新的经济增长点。
+                    </p>
+
+                    <p style="text-indent: 2em;">
+                        1.全方位的服务功能:中心可提供航空货物仓储、中转、装卸、搬运、配载、整理和场地租赁服务。
+                    </p>
+
+                    <p style="text-indent: 2em;">
+                        2.一流的仓储平台:库区面积10000余平方米，其中国内库区面积8000平方米，国际2000平方米，各库区均设置贵重物品、活体动物、危险品和冷藏物品等特殊物品库房。年设计吞吐量8万吨。
+                    </p>
+
+                    <p style="text-indent: 2em;">
+                        3.完善的设备、设施: 中心现有升降平台车3台、传送带车7辆、牵引车10辆、叉车6辆,安检通道6个。
+                    </p>
+
+                    <p style="text-indent: 2em;">
+                        4.先进的管理手段:库区安装了先进的电子监控系统，可有效保障各类货物安全储运,货运网络管理采用天信达公司货运信息管理系统。
+                    </p>
+
+                    <p style="font-weight: bold;">
+                        业务电话：<br>
+                        省内客户可直接拨打96888—3（货运业务）（按市话计费）<br>
+                        传真：0531-82086600
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators" style="bottom: -10px">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <a href="#">
+                        <img src="../static/img/ad20.jpg" alt="ad1">
+                    </a>
+
+                    <div class="carousel-caption">
+                    </div>
+                </div>
+                <div class="item">
+                    <a href="#">
+                        <img src="../static/img/ad21.jpg" alt="ad2">
+                    </a>
+
+                    <div class="carousel-caption">
+                    </div>
+                </div>
+                <div class="item">
+                    <a href="#">
+                        <img src="../static/img/ad22.jpg" alt="ad3">
+                    </a>
+
+                    <div class="carousel-caption">
+                    </div>
+                </div>
+            </div>
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../static/js/jquery.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/hammer.js"></script>
+<script src="../static/js/jquery.hammer.js"></script>
+<script src="../static/js/jquery.storageapi.js"></script>
+<script>
+    $(document).ready(function () {
+        //去除登录标识
+        if ($.localStorage.isSet('isLogin')) {
+            $.localStorage.remove('isLogin');
+        }
+        $('#carousel-example-generic').hammer().on('swipeleft', function () {
+            $(this).carousel('next');
+        })
+        $('#carousel-example-generic').hammer().on('swiperight', function () {
+            $(this).carousel('prev');
+        })
+        $('#home').click(function () {
+            window.location.href = "login.html";
+        });
+        $('#flight_info').click(function () {
+            window.location.href = "login_flight_info.html";
+        });
+        $('#logo').click(function () {
+            window.location.href = "login.html";
+        });
+
+        $('#declaration').click(function () {
+            window.location.href = "declaration.html";
+        });
+
+        //免责声明checkbox勾选处理
+        $('#check-dec').change(function () {
+            if (!$(this).is(':checked')) {
+                $('#signin').attr('disabled', 'disabled');
+            } else {
+                $('#signin').removeAttr('disabled');
+            }
+        });
+
+        //显示提示信息
+        var showMsg = function (msg) {
+            $('#msg').text(msg);
+            $('#alert-msg').show('slow', function () {
+                setTimeout(function () {
+                    $('#msg').text('');
+                    $('#alert-msg').hide();
+                }, 5000);
+            });
+        }
+
+        //form提交
+        $('#signin').click(function () {
+            //validate fields
+            var phone = $('#phone').val(), vcode = $('#vcode').val();
+            if (phone == '') {
+                showMsg('请输入手机号。');
+                return;
+            }
+            if (vcode == '') {
+                showMsg('请输入验证码。');
+                return;
+            }
+            //设置登录标识
+            $.localStorage.set('isLogin', true);
+
+            $('#signin-form').submit();
+        });
+    });
+</script>
+</body>
+</html>
