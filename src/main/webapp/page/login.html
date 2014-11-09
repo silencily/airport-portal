@@ -29,7 +29,7 @@
 <div class="row ">
     <div class="col-xs-12">
         <div id="alert-msg" class="alert alert-danger alert-dismissible error-alert" role="alert" style="display: none">
-            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span
+            <button id="msg-btn" type="button" class="close"><span aria-hidden="true">&times;</span><span
                     class="sr-only">Close</span></button>
             <strong>错误：</strong> <span id="msg"></span>
         </div>
@@ -1594,15 +1594,6 @@
             $('#div_flight_info_ad').css("display","block");
         });
 
-        //免责声明checkbox勾选处理
-        $('#check-dec').change(function () {
-            if (!$(this).is(':checked')) {
-                $('#signin').attr('disabled', 'disabled');
-            } else {
-                $('#signin').removeAttr('disabled');
-            }
-        });
-
         //显示提示信息
         var showMsg = function (msg) {
             $('#msg').text(msg);
@@ -1613,6 +1604,11 @@
                 }, 5000);
             });
         }
+        //关闭错误提示，使用默认的方式关闭会将该div删除带来问题
+        $('#msg-btn').click(function(){
+            $('#msg').text('');
+            $('#alert-msg').hide();
+        });
 
         //form提交
         $('#signin').click(function () {
@@ -1624,6 +1620,10 @@
             }
             if (vcode == '') {
                 showMsg('请输入验证码。');
+                return;
+            }
+            if (!$('#check-dec').is(':checked')) {
+                showMsg('请阅读并接受免责声明。');
                 return;
             }
             $('#signin-form').submit();
